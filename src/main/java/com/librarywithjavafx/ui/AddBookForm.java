@@ -46,24 +46,24 @@ public class AddBookForm {
                 String author = authorInput.getText();
                 int pageCount = Integer.parseInt(pageCountInput.getText());
 
-                // Yeni Book nesnesi oluşturma
+                // Create new book object
                 Book addNewBook = new Book(0, title, author, pageCount, false);
 
-                // DAO kullanarak veritabanına kaydedilir
+                // Save it using DAO
                 BookDAO bookDAO = new BookDAO();
                 bookDAO.addBook(addNewBook);
 
                 System.out.println("Book has been added successfully: " + title);
 
 
-                window.close(); // Başarıyla eklenirse pencereyi kapatır
+                window.close(); // Close the windows if success
             } catch (Exception ex) {
                 System.out.println("An error has occured: " + ex.getMessage());
                 ex.printStackTrace();
             }
         });
 
-        // Elemanları Grid'e yerleştiriyoruz
+        // put the items in grid order
         grid.add(titleLabel, 0, 0);
         grid.add(titleInput, 1, 0);
 

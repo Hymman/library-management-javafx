@@ -19,7 +19,7 @@ import java.util.List;
 public class ListBooksForm {
 
     private TableView<Book> table;
-    private Stage window; // dikkat: artık window field oldu
+    private Stage window; // the window is field now
 
     public void loadData() {
         BookDAO bookDAO = new BookDAO();
@@ -29,7 +29,7 @@ public class ListBooksForm {
             table.setItems(data);
         }
     }
-    // arama alanı için dinamik yapı
+    // dynamic search for both author and title
     private void filterBooks(String keyword){
         BookDAO bookDAO = new BookDAO();
         List<Book> allBooks = bookDAO.getAllBooks();
@@ -52,7 +52,7 @@ public class ListBooksForm {
     }
 
     public void display() {
-        if (window == null) { // pencere daha önce açılmadıysa
+        if (window == null) { // if the window has not been opened before
             window = new Stage();
             window.setTitle("List All Books");
 
@@ -113,18 +113,17 @@ public class ListBooksForm {
 
 
 
-            // Eğer sadece ENTER tuşuna basınca filtre çalıştırmak istersek:
+            // use it set on action style:
             // searchField.setOnAction(e -> {
             //     filterBooks(searchField.getText());
             // });
-            // Ancak şu anda her yazı değişiminde anlık filtreleme yapıyoruz.
 
 
-            // borrower bilgileirni gösteren buton
+            // borrower info show
             Button borrowerInfoButton = new Button("Show Borrower Info");
             borrowerInfoButton.setDisable(true); // Başta kapalı
 
-            //borrow ve return buton tanımları
+            //define borrow and return
             Button borrowbtn = new Button("Borrow Book");
 
             Button returnBtn = new Button("Return Book");
@@ -133,7 +132,7 @@ public class ListBooksForm {
             borrowbtn.setDisable(true);
             returnBtn.setDisable(true);
 
-            //select olunca enable olacak
+            //enables when selected
             table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection)->
             {boolean disableButtons = (newSelection==null);
             borrowbtn.setDisable(disableButtons);
@@ -153,11 +152,11 @@ public class ListBooksForm {
 
 
             table.setStyle(
-                    " -fx-selection-bar: #a5d6a7; " +    // Açık yeşil seçili satır
-                            " -fx-selection-bar-text: black;"    // Yazı siyah
+                    " -fx-selection-bar: #a5d6a7; " +    // ligth green selectet row color
+                            " -fx-selection-bar-text: black;"    // dark text
             );
 
-            //borrow ve return buton seton actiionları
+            //borrow and return setonactions
 
             borrowbtn.setOnAction(e->{
                 Book selectedBook = table.getSelectionModel().getSelectedItem();
@@ -202,7 +201,7 @@ public class ListBooksForm {
                 }
             });
 
-            //borrower info button aksiyon
+            //borrower info button set on action
             borrowerInfoButton.setOnAction(e -> {
                 Book selectedBook = table.getSelectionModel().getSelectedItem();
                 if (selectedBook != null && selectedBook.isBorrowed()) {
@@ -247,8 +246,8 @@ public class ListBooksForm {
             window.setScene(scene);
         }
 
-        loadData(); // her seferinde veri yenile
-        window.show(); // showAndWait DEĞİL, sadece show
+        loadData(); // reload everytime
+        window.show(); //
     }
 
     private void showAlert(Alert.AlertType type, String title, String message) {

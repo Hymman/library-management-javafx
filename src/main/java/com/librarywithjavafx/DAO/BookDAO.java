@@ -109,7 +109,7 @@ public class BookDAO {
         }
     }
 
-    // ui de borrow ve return için isborrowed statüyü değiştiren metod
+    // a method to change the is borrowed status
     public void updateBorrowStatus(int id, boolean isBorrowed){
         String sql = "UPDATE books SET  is_borrowed = ? WHERE id = ?";
 

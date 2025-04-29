@@ -73,11 +73,7 @@ public class BorrowRecordsForm {
         });
 
 
-        /*TableColumn<BorrowRecord, String> borrowDateColumn = new TableColumn<>("Borrow Date");
-        borrowDateColumn.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
 
-        TableColumn<BorrowRecord, String> returnDateColumn = new TableColumn<>("Return Date");
-        returnDateColumn.setCellValueFactory(new PropertyValueFactory<>("returnDate"));*/
 
         table.getColumns().addAll(idColumn, bookIdColumn, nameColumn, idNumberColumn, borrowDateColumn, returnDateColumn);
 

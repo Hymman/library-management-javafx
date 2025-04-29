@@ -17,9 +17,10 @@ public class MainApp extends Application {
         Button btnUpdate = new Button("Update Book");
         Button btnDelete = new Button("Delete Book");
 
-        // TEK ListBooksForm yaratıyoruz!
+        // create a LisBookFrom
         ListBooksForm listBooksForm = new ListBooksForm();
 
+        // lis, add, update, delete, view record buttons
         btnList.setOnAction(e -> {
             listBooksForm.display();
         });
@@ -54,11 +55,11 @@ public class MainApp extends Application {
         VBox root = new VBox(15);
         root.setStyle("-fx-padding: 20");
 
-// btnList butonunu büyütüyoruz
-        btnList.setStyle("-fx-font-size: 20px; -fx-padding: 15 30 15 30");
+        // btnList style
+        btnList.setStyle("-fx-font-size: 20px; -fx-padding: 10 20 10 20");
 
 
-// Butonları root'a ekliyoruz
+        // add rootes all buttons
         root.getChildren().addAll(btnList, btnAdd, btnUpdate, btnDelete,btnViewBorrowRecords);
 
         Scene scene = new Scene(root, 400, 300);
